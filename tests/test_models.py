@@ -37,7 +37,7 @@ def test_rejects_non_finite_rating_values(invalid_rating: float) -> None:
         Rating(user_id=1, item_id=10, rating=invalid_rating)
 
 
-@pytest.mark.parametrize("invalid_rating", ["5", None, True])
+@pytest.mark.parametrize("invalid_rating", ["5", None, True, False])
 def test_rejects_non_numeric_rating_values(invalid_rating: object) -> None:
     with pytest.raises(TypeError, match="numeric"):
         Rating(user_id=1, item_id=10, rating=invalid_rating)  # type: ignore[arg-type]
